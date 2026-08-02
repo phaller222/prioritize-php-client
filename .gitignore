@@ -1,0 +1,9 @@
+# Maven codegen harness artifacts
+/target/
+
+# Composer
+/vendor/
+composer.lock
+
+# OpenAPI Generator bookkeeping
+/.openapi-generator/

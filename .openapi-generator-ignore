@@ -1,0 +1,10 @@
+# Files the generator must NOT create or overwrite — these are hand-maintained.
+# Everything else (composer.json, src/, docs/) is generated and must not be hand-edited.
+README.md
+LICENSE
+.gitignore
+pom.xml
+generate.sh
+openapi/**
+git_push.sh
+.travis.yml
