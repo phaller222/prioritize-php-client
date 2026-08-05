@@ -10,14 +10,19 @@ All URIs are relative to http://localhost:8080, except if the operation defines 
 | [**resourceCreateResourceGroup()**](ResourcesApi.md#resourceCreateResourceGroup) | **POST** /api/v1/departments/{deptId}/resourcegroups | Creates a new resource group for a specific department |
 | [**resourceDeleteResource()**](ResourcesApi.md#resourceDeleteResource) | **DELETE** /api/v1/resources/{id} | Deletes a resource, if the current user is authorized |
 | [**resourceDeleteResourceGroup()**](ResourcesApi.md#resourceDeleteResourceGroup) | **DELETE** /api/v1/resourcegroups/{groupId} | Deletes a resource group, if the current user is authorized |
+| [**resourceGetAllResources()**](ResourcesApi.md#resourceGetAllResources) | **GET** /api/v1/resources | Returns every resource the current user may read (flat list) |
+| [**resourceGetLatestValues()**](ResourcesApi.md#resourceGetLatestValues) | **GET** /api/v1/resources/{id}/values/latest | Returns the newest reading of every telemetry data point of a resource |
 | [**resourceGetMyActiveReservations()**](ResourcesApi.md#resourceGetMyActiveReservations) | **GET** /api/v1/resources/{id}/reservations/mine | Returns the caller&#39;s own currently active reservations on this resource |
 | [**resourceGetReservationsForResource()**](ResourcesApi.md#resourceGetReservationsForResource) | **GET** /api/v1/resources/{id}/reservations | Returns all reservations of a resource (occupancy overview) |
 | [**resourceGetResource()**](ResourcesApi.md#resourceGetResource) | **GET** /api/v1/resources/{id} | Retrieves a resource, if the current user is authorized |
+| [**resourceGetResourceGroups()**](ResourcesApi.md#resourceGetResourceGroups) | **GET** /api/v1/departments/{deptId}/resourcegroups | Returns the resource groups of a department |
+| [**resourceGetResourceStatus()**](ResourcesApi.md#resourceGetResourceStatus) | **GET** /api/v1/resources/status | Returns every readable resource with its latest values and monitoring rules |
 | [**resourceGetResourcesByResourceGroup()**](ResourcesApi.md#resourceGetResourcesByResourceGroup) | **GET** /api/v1/resourcegroups/{groupId}/resources | Returns all resources of a specific resource group |
 | [**resourceGetSkillsForResource()**](ResourcesApi.md#resourceGetSkillsForResource) | **GET** /api/v1/resources/{resourceId}/skills | Returns all skills of a resource |
 | [**resourceGetSkillsForResourceInGroup()**](ResourcesApi.md#resourceGetSkillsForResourceInGroup) | **GET** /api/v1/resourcegroups/{groupId}/resources/{resourceId}/skills | Returns all skills of a resource, filtered by resource group |
 | [**resourcePartialUpdateResource()**](ResourcesApi.md#resourcePartialUpdateResource) | **PATCH** /api/v1/resources/{id} | Updates individual fields of a resource (PATCH semantics: null &#x3D; unchanged) |
 | [**resourceRecordValue()**](ResourcesApi.md#resourceRecordValue) | **POST** /api/v1/resources/{id}/values | Records a telemetry reading for a resource (REST ingest) |
+| [**resourceRenameResourceGroup()**](ResourcesApi.md#resourceRenameResourceGroup) | **PUT** /api/v1/resourcegroups/{groupId} | Renames a resource group, if the current user is authorized |
 | [**resourceReserveResource()**](ResourcesApi.md#resourceReserveResource) | **POST** /api/v1/resources/{id}/reserve | Reserves a resource for a specific time span |
 | [**resourceSendCommand()**](ResourcesApi.md#resourceSendCommand) | **POST** /api/v1/resources/{id}/command | Sends a control command to a resource |
 
@@ -403,6 +408,129 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `resourceGetAllResources()`
+
+```php
+resourceGetAllResources(): \Hallerweb\Prioritize\Client\Model\ResourceDTO[]
+```
+
+Returns every resource the current user may read (flat list)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = Hallerweb\Prioritize\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Hallerweb\Prioritize\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hallerweb\Prioritize\Client\Api\ResourcesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->resourceGetAllResources();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ResourcesApi->resourceGetAllResources: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Hallerweb\Prioritize\Client\Model\ResourceDTO[]**](../Model/ResourceDTO.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth), [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `resourceGetLatestValues()`
+
+```php
+resourceGetLatestValues($id): \Hallerweb\Prioritize\Client\Model\ResourceValueDTO[]
+```
+
+Returns the newest reading of every telemetry data point of a resource
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = Hallerweb\Prioritize\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Hallerweb\Prioritize\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hallerweb\Prioritize\Client\Api\ResourcesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 56; // int
+
+try {
+    $result = $apiInstance->resourceGetLatestValues($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ResourcesApi->resourceGetLatestValues: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **int**|  | |
+
+### Return type
+
+[**\Hallerweb\Prioritize\Client\Model\ResourceValueDTO[]**](../Model/ResourceValueDTO.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth), [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `resourceGetMyActiveReservations()`
 
 ```php
@@ -578,6 +706,129 @@ try {
 ### Return type
 
 [**\Hallerweb\Prioritize\Client\Model\ResourceDTO**](../Model/ResourceDTO.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth), [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `resourceGetResourceGroups()`
+
+```php
+resourceGetResourceGroups($dept_id): \Hallerweb\Prioritize\Client\Model\ResourceGroupDTO[]
+```
+
+Returns the resource groups of a department
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = Hallerweb\Prioritize\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Hallerweb\Prioritize\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hallerweb\Prioritize\Client\Api\ResourcesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$dept_id = 56; // int
+
+try {
+    $result = $apiInstance->resourceGetResourceGroups($dept_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ResourcesApi->resourceGetResourceGroups: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **dept_id** | **int**|  | |
+
+### Return type
+
+[**\Hallerweb\Prioritize\Client\Model\ResourceGroupDTO[]**](../Model/ResourceGroupDTO.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth), [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `resourceGetResourceStatus()`
+
+```php
+resourceGetResourceStatus(): \Hallerweb\Prioritize\Client\Model\ResourceStatusDTO[]
+```
+
+Returns every readable resource with its latest values and monitoring rules
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = Hallerweb\Prioritize\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Hallerweb\Prioritize\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hallerweb\Prioritize\Client\Api\ResourcesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->resourceGetResourceStatus();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ResourcesApi->resourceGetResourceStatus: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Hallerweb\Prioritize\Client\Model\ResourceStatusDTO[]**](../Model/ResourceStatusDTO.md)
 
 ### Authorization
 
@@ -907,6 +1158,71 @@ void (empty response body)
 
 - **Content-Type**: `application/json`
 - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `resourceRenameResourceGroup()`
+
+```php
+resourceRenameResourceGroup($group_id, $name): \Hallerweb\Prioritize\Client\Model\ResourceGroupDTO
+```
+
+Renames a resource group, if the current user is authorized
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = Hallerweb\Prioritize\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Hallerweb\Prioritize\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hallerweb\Prioritize\Client\Api\ResourcesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$group_id = 56; // int
+$name = 'name_example'; // string
+
+try {
+    $result = $apiInstance->resourceRenameResourceGroup($group_id, $name);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ResourcesApi->resourceRenameResourceGroup: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **int**|  | |
+| **name** | **string**|  | |
+
+### Return type
+
+[**\Hallerweb\Prioritize\Client\Model\ResourceGroupDTO**](../Model/ResourceGroupDTO.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth), [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

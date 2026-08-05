@@ -1,6 +1,6 @@
 <?php
 /**
- * TaskScheduleDTO
+ * ResourceStatusDTO
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Hallerweb\Prioritize\Client\ObjectSerializer;
 
 /**
- * TaskScheduleDTO Class Doc Comment
+ * ResourceStatusDTO Class Doc Comment
  *
  * @category Class
  * @package  Hallerweb\Prioritize\Client
@@ -41,7 +41,7 @@ use \Hallerweb\Prioritize\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class TaskScheduleDTO implements ModelInterface, ArrayAccess, \JsonSerializable
+class ResourceStatusDTO implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class TaskScheduleDTO implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'TaskScheduleDTO';
+    protected static $openAPIModelName = 'ResourceStatusDTO';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,17 +58,9 @@ class TaskScheduleDTO implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'int',
-        'project_id' => 'int',
-        'name' => 'string',
-        'task_name' => 'string',
-        'task_description' => 'string',
-        'task_priority' => 'int',
-        'cron_expression' => 'string',
-        'zone_id' => 'string',
-        'enabled' => 'bool',
-        'next_fire_at' => '\DateTime',
-        'last_fired_at' => '\DateTime'
+        'resource' => '\Hallerweb\Prioritize\Client\Model\ResourceDTO',
+        'latest_values' => '\Hallerweb\Prioritize\Client\Model\ResourceValueDTO[]',
+        'telemetry_rules' => '\Hallerweb\Prioritize\Client\Model\TelemetryRuleDTO[]'
     ];
 
     /**
@@ -79,17 +71,9 @@ class TaskScheduleDTO implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'int64',
-        'project_id' => 'int64',
-        'name' => null,
-        'task_name' => null,
-        'task_description' => null,
-        'task_priority' => 'int32',
-        'cron_expression' => null,
-        'zone_id' => null,
-        'enabled' => null,
-        'next_fire_at' => 'date-time',
-        'last_fired_at' => 'date-time'
+        'resource' => null,
+        'latest_values' => null,
+        'telemetry_rules' => null
     ];
 
     /**
@@ -98,17 +82,9 @@ class TaskScheduleDTO implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'project_id' => false,
-        'name' => false,
-        'task_name' => false,
-        'task_description' => false,
-        'task_priority' => false,
-        'cron_expression' => false,
-        'zone_id' => false,
-        'enabled' => false,
-        'next_fire_at' => false,
-        'last_fired_at' => false
+        'resource' => false,
+        'latest_values' => false,
+        'telemetry_rules' => false
     ];
 
     /**
@@ -197,17 +173,9 @@ class TaskScheduleDTO implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'project_id' => 'projectId',
-        'name' => 'name',
-        'task_name' => 'taskName',
-        'task_description' => 'taskDescription',
-        'task_priority' => 'taskPriority',
-        'cron_expression' => 'cronExpression',
-        'zone_id' => 'zoneId',
-        'enabled' => 'enabled',
-        'next_fire_at' => 'nextFireAt',
-        'last_fired_at' => 'lastFiredAt'
+        'resource' => 'resource',
+        'latest_values' => 'latestValues',
+        'telemetry_rules' => 'telemetryRules'
     ];
 
     /**
@@ -216,17 +184,9 @@ class TaskScheduleDTO implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'project_id' => 'setProjectId',
-        'name' => 'setName',
-        'task_name' => 'setTaskName',
-        'task_description' => 'setTaskDescription',
-        'task_priority' => 'setTaskPriority',
-        'cron_expression' => 'setCronExpression',
-        'zone_id' => 'setZoneId',
-        'enabled' => 'setEnabled',
-        'next_fire_at' => 'setNextFireAt',
-        'last_fired_at' => 'setLastFiredAt'
+        'resource' => 'setResource',
+        'latest_values' => 'setLatestValues',
+        'telemetry_rules' => 'setTelemetryRules'
     ];
 
     /**
@@ -235,17 +195,9 @@ class TaskScheduleDTO implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'project_id' => 'getProjectId',
-        'name' => 'getName',
-        'task_name' => 'getTaskName',
-        'task_description' => 'getTaskDescription',
-        'task_priority' => 'getTaskPriority',
-        'cron_expression' => 'getCronExpression',
-        'zone_id' => 'getZoneId',
-        'enabled' => 'getEnabled',
-        'next_fire_at' => 'getNextFireAt',
-        'last_fired_at' => 'getLastFiredAt'
+        'resource' => 'getResource',
+        'latest_values' => 'getLatestValues',
+        'telemetry_rules' => 'getTelemetryRules'
     ];
 
     /**
@@ -305,17 +257,9 @@ class TaskScheduleDTO implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('project_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('task_name', $data ?? [], null);
-        $this->setIfExists('task_description', $data ?? [], null);
-        $this->setIfExists('task_priority', $data ?? [], null);
-        $this->setIfExists('cron_expression', $data ?? [], null);
-        $this->setIfExists('zone_id', $data ?? [], null);
-        $this->setIfExists('enabled', $data ?? [], null);
-        $this->setIfExists('next_fire_at', $data ?? [], null);
-        $this->setIfExists('last_fired_at', $data ?? [], null);
+        $this->setIfExists('resource', $data ?? [], null);
+        $this->setIfExists('latest_values', $data ?? [], null);
+        $this->setIfExists('telemetry_rules', $data ?? [], null);
     }
 
     /**
@@ -361,298 +305,82 @@ class TaskScheduleDTO implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets resource
      *
-     * @return int|null
+     * @return \Hallerweb\Prioritize\Client\Model\ResourceDTO|null
      */
-    public function getId()
+    public function getResource()
     {
-        return $this->container['id'];
+        return $this->container['resource'];
     }
 
     /**
-     * Sets id
+     * Sets resource
      *
-     * @param int|null $id id
+     * @param \Hallerweb\Prioritize\Client\Model\ResourceDTO|null $resource resource
      *
      * @return self
      */
-    public function setId($id)
+    public function setResource($resource)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($resource)) {
+            throw new \InvalidArgumentException('non-nullable resource cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['resource'] = $resource;
 
         return $this;
     }
 
     /**
-     * Gets project_id
+     * Gets latest_values
      *
-     * @return int|null
+     * @return \Hallerweb\Prioritize\Client\Model\ResourceValueDTO[]|null
      */
-    public function getProjectId()
+    public function getLatestValues()
     {
-        return $this->container['project_id'];
+        return $this->container['latest_values'];
     }
 
     /**
-     * Sets project_id
+     * Sets latest_values
      *
-     * @param int|null $project_id project_id
+     * @param \Hallerweb\Prioritize\Client\Model\ResourceValueDTO[]|null $latest_values latest_values
      *
      * @return self
      */
-    public function setProjectId($project_id)
+    public function setLatestValues($latest_values)
     {
-        if (is_null($project_id)) {
-            throw new \InvalidArgumentException('non-nullable project_id cannot be null');
+        if (is_null($latest_values)) {
+            throw new \InvalidArgumentException('non-nullable latest_values cannot be null');
         }
-        $this->container['project_id'] = $project_id;
+        $this->container['latest_values'] = $latest_values;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets telemetry_rules
      *
-     * @return string|null
+     * @return \Hallerweb\Prioritize\Client\Model\TelemetryRuleDTO[]|null
      */
-    public function getName()
+    public function getTelemetryRules()
     {
-        return $this->container['name'];
+        return $this->container['telemetry_rules'];
     }
 
     /**
-     * Sets name
+     * Sets telemetry_rules
      *
-     * @param string|null $name name
+     * @param \Hallerweb\Prioritize\Client\Model\TelemetryRuleDTO[]|null $telemetry_rules telemetry_rules
      *
      * @return self
      */
-    public function setName($name)
+    public function setTelemetryRules($telemetry_rules)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($telemetry_rules)) {
+            throw new \InvalidArgumentException('non-nullable telemetry_rules cannot be null');
         }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets task_name
-     *
-     * @return string|null
-     */
-    public function getTaskName()
-    {
-        return $this->container['task_name'];
-    }
-
-    /**
-     * Sets task_name
-     *
-     * @param string|null $task_name task_name
-     *
-     * @return self
-     */
-    public function setTaskName($task_name)
-    {
-        if (is_null($task_name)) {
-            throw new \InvalidArgumentException('non-nullable task_name cannot be null');
-        }
-        $this->container['task_name'] = $task_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets task_description
-     *
-     * @return string|null
-     */
-    public function getTaskDescription()
-    {
-        return $this->container['task_description'];
-    }
-
-    /**
-     * Sets task_description
-     *
-     * @param string|null $task_description task_description
-     *
-     * @return self
-     */
-    public function setTaskDescription($task_description)
-    {
-        if (is_null($task_description)) {
-            throw new \InvalidArgumentException('non-nullable task_description cannot be null');
-        }
-        $this->container['task_description'] = $task_description;
-
-        return $this;
-    }
-
-    /**
-     * Gets task_priority
-     *
-     * @return int|null
-     */
-    public function getTaskPriority()
-    {
-        return $this->container['task_priority'];
-    }
-
-    /**
-     * Sets task_priority
-     *
-     * @param int|null $task_priority task_priority
-     *
-     * @return self
-     */
-    public function setTaskPriority($task_priority)
-    {
-        if (is_null($task_priority)) {
-            throw new \InvalidArgumentException('non-nullable task_priority cannot be null');
-        }
-        $this->container['task_priority'] = $task_priority;
-
-        return $this;
-    }
-
-    /**
-     * Gets cron_expression
-     *
-     * @return string|null
-     */
-    public function getCronExpression()
-    {
-        return $this->container['cron_expression'];
-    }
-
-    /**
-     * Sets cron_expression
-     *
-     * @param string|null $cron_expression cron_expression
-     *
-     * @return self
-     */
-    public function setCronExpression($cron_expression)
-    {
-        if (is_null($cron_expression)) {
-            throw new \InvalidArgumentException('non-nullable cron_expression cannot be null');
-        }
-        $this->container['cron_expression'] = $cron_expression;
-
-        return $this;
-    }
-
-    /**
-     * Gets zone_id
-     *
-     * @return string|null
-     */
-    public function getZoneId()
-    {
-        return $this->container['zone_id'];
-    }
-
-    /**
-     * Sets zone_id
-     *
-     * @param string|null $zone_id zone_id
-     *
-     * @return self
-     */
-    public function setZoneId($zone_id)
-    {
-        if (is_null($zone_id)) {
-            throw new \InvalidArgumentException('non-nullable zone_id cannot be null');
-        }
-        $this->container['zone_id'] = $zone_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets enabled
-     *
-     * @return bool|null
-     */
-    public function getEnabled()
-    {
-        return $this->container['enabled'];
-    }
-
-    /**
-     * Sets enabled
-     *
-     * @param bool|null $enabled enabled
-     *
-     * @return self
-     */
-    public function setEnabled($enabled)
-    {
-        if (is_null($enabled)) {
-            throw new \InvalidArgumentException('non-nullable enabled cannot be null');
-        }
-        $this->container['enabled'] = $enabled;
-
-        return $this;
-    }
-
-    /**
-     * Gets next_fire_at
-     *
-     * @return \DateTime|null
-     */
-    public function getNextFireAt()
-    {
-        return $this->container['next_fire_at'];
-    }
-
-    /**
-     * Sets next_fire_at
-     *
-     * @param \DateTime|null $next_fire_at next_fire_at
-     *
-     * @return self
-     */
-    public function setNextFireAt($next_fire_at)
-    {
-        if (is_null($next_fire_at)) {
-            throw new \InvalidArgumentException('non-nullable next_fire_at cannot be null');
-        }
-        $this->container['next_fire_at'] = $next_fire_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_fired_at
-     *
-     * @return \DateTime|null
-     */
-    public function getLastFiredAt()
-    {
-        return $this->container['last_fired_at'];
-    }
-
-    /**
-     * Sets last_fired_at
-     *
-     * @param \DateTime|null $last_fired_at last_fired_at
-     *
-     * @return self
-     */
-    public function setLastFiredAt($last_fired_at)
-    {
-        if (is_null($last_fired_at)) {
-            throw new \InvalidArgumentException('non-nullable last_fired_at cannot be null');
-        }
-        $this->container['last_fired_at'] = $last_fired_at;
+        $this->container['telemetry_rules'] = $telemetry_rules;
 
         return $this;
     }
