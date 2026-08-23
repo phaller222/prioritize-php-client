@@ -1,6 +1,6 @@
 {
     "name": "hallerweb/prioritize-php-client",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "description": "REST API of Prioritize, a resource, project and IoT orchestration platform. All endpoints live under /api/v1. From 1.0.0 on this REST surface is the stable public contract (SemVer); the Vaadin admin GUI and its @Route URLs are an implementation detail and NOT part of that promise. A few areas are marked 'experimental' in their schema and may still change within the 1.x line.",
     "keywords": [
         "openapitools",
