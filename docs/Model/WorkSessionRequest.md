@@ -1,16 +1,12 @@
-# # WorkSession
+# # WorkSessionRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [optional]
-**user_id** | **int** |  | [optional]
-**username** | **string** |  | [optional]
 **from** | **\DateTime** |  | [optional]
 **until** | **\DateTime** |  | [optional]
-**seconds** | **int** |  | [optional]
-**running** | **bool** |  | [optional]
-**correction** | [**\Hallerweb\Prioritize\Client\Model\Correction**](Correction.md) |  | [optional]
+**reason** | **string** |  | [optional]
+**user_id** | **int** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

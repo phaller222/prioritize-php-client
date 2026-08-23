@@ -6,6 +6,7 @@ All URIs are relative to http://localhost:8080, except if the operation defines 
 | ------------- | ------------- | ------------- |
 | [**resourceAssignSkillToResource()**](ResourcesApi.md#resourceAssignSkillToResource) | **POST** /api/v1/resources/{resourceId}/skills | Assigns a skill to a resource |
 | [**resourceCancelReservation()**](ResourcesApi.md#resourceCancelReservation) | **DELETE** /api/v1/reservations/{reservationId} | Cancels a reservation and releases the occupied slot |
+| [**resourceClearCostRate()**](ResourcesApi.md#resourceClearCostRate) | **DELETE** /api/v1/resources/{id}/cost-rate | Removes a resource&#39;s cost rate |
 | [**resourceCreateResource()**](ResourcesApi.md#resourceCreateResource) | **POST** /api/v1/resourcegroups/{groupId}/resources | Creates a new resource in a specific resource group |
 | [**resourceCreateResourceGroup()**](ResourcesApi.md#resourceCreateResourceGroup) | **POST** /api/v1/departments/{deptId}/resourcegroups | Creates a new resource group for a specific department |
 | [**resourceDeleteResource()**](ResourcesApi.md#resourceDeleteResource) | **DELETE** /api/v1/resources/{id} | Deletes a resource, if the current user is authorized |
@@ -149,6 +150,69 @@ void (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `resourceClearCostRate()`
+
+```php
+resourceClearCostRate($id): \Hallerweb\Prioritize\Client\Model\ResourceDTO
+```
+
+Removes a resource's cost rate
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = Hallerweb\Prioritize\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Hallerweb\Prioritize\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hallerweb\Prioritize\Client\Api\ResourcesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 56; // int
+
+try {
+    $result = $apiInstance->resourceClearCostRate($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ResourcesApi->resourceClearCostRate: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **int**|  | |
+
+### Return type
+
+[**\Hallerweb\Prioritize\Client\Model\ResourceDTO**](../Model/ResourceDTO.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth), [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

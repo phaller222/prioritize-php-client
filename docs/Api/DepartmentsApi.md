@@ -7,6 +7,7 @@ All URIs are relative to http://localhost:8080, except if the operation defines 
 | [**departmentCreate()**](DepartmentsApi.md#departmentCreate) | **POST** /api/v1/companies/{companyId}/departments | Create department |
 | [**departmentDelete()**](DepartmentsApi.md#departmentDelete) | **DELETE** /api/v1/departments/{id} | Delete department |
 | [**departmentGetById()**](DepartmentsApi.md#departmentGetById) | **GET** /api/v1/departments/{id} | Get department by id |
+| [**departmentGetDepartments()**](DepartmentsApi.md#departmentGetDepartments) | **GET** /api/v1/departments | List the departments the caller may read, across all companies |
 | [**departmentGetDepartmentsByCompany()**](DepartmentsApi.md#departmentGetDepartmentsByCompany) | **GET** /api/v1/companies/{companyId}/departments | Get departments by company |
 | [**departmentUpdate()**](DepartmentsApi.md#departmentUpdate) | **PUT** /api/v1/departments/{id} | Update department |
 
@@ -187,6 +188,66 @@ try {
 ### Return type
 
 [**\Hallerweb\Prioritize\Client\Model\DepartmentDTO**](../Model/DepartmentDTO.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth), [bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `*/*`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `departmentGetDepartments()`
+
+```php
+departmentGetDepartments(): \Hallerweb\Prioritize\Client\Model\DepartmentDTO[]
+```
+
+List the departments the caller may read, across all companies
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: basicAuth
+$config = Hallerweb\Prioritize\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Hallerweb\Prioritize\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Hallerweb\Prioritize\Client\Api\DepartmentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->departmentGetDepartments();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DepartmentsApi->departmentGetDepartments: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Hallerweb\Prioritize\Client\Model\DepartmentDTO[]**](../Model/DepartmentDTO.md)
 
 ### Authorization
 

@@ -25,5 +25,8 @@ Name | Type | Description | Notes
 **department_id** | **int** |  | [optional]
 **resource_group_id** | **int** |  | [optional]
 **occupied_slots** | **int** |  | [optional]
+**cost_rate** | **float** |  | [optional]
+**cost_currency** | **string** |  | [optional]
+**cost_rate_unit** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

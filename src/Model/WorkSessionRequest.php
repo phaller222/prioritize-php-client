@@ -1,6 +1,6 @@
 <?php
 /**
- * AddressDTO
+ * WorkSessionRequest
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Hallerweb\Prioritize\Client\ObjectSerializer;
 
 /**
- * AddressDTO Class Doc Comment
+ * WorkSessionRequest Class Doc Comment
  *
  * @category Class
  * @package  Hallerweb\Prioritize\Client
@@ -41,7 +41,7 @@ use \Hallerweb\Prioritize\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AddressDTO implements ModelInterface, ArrayAccess, \JsonSerializable
+class WorkSessionRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AddressDTO implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AddressDTO';
+    protected static $openAPIModelName = 'WorkSessionRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,16 +58,10 @@ class AddressDTO implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'int',
-        'street' => 'string',
-        'housenumber' => 'string',
-        'floor' => 'string',
-        'zip_code' => 'string',
-        'city' => 'string',
-        'country' => 'string',
-        'phone' => 'string',
-        'fax' => 'string',
-        'mobile' => 'string'
+        'from' => '\DateTime',
+        'until' => '\DateTime',
+        'reason' => 'string',
+        'user_id' => 'int'
     ];
 
     /**
@@ -78,16 +72,10 @@ class AddressDTO implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'int64',
-        'street' => null,
-        'housenumber' => null,
-        'floor' => null,
-        'zip_code' => null,
-        'city' => null,
-        'country' => null,
-        'phone' => null,
-        'fax' => null,
-        'mobile' => null
+        'from' => 'date-time',
+        'until' => 'date-time',
+        'reason' => null,
+        'user_id' => 'int64'
     ];
 
     /**
@@ -96,16 +84,10 @@ class AddressDTO implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'street' => false,
-        'housenumber' => false,
-        'floor' => false,
-        'zip_code' => false,
-        'city' => false,
-        'country' => false,
-        'phone' => false,
-        'fax' => false,
-        'mobile' => false
+        'from' => false,
+        'until' => false,
+        'reason' => false,
+        'user_id' => false
     ];
 
     /**
@@ -194,16 +176,10 @@ class AddressDTO implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'street' => 'street',
-        'housenumber' => 'housenumber',
-        'floor' => 'floor',
-        'zip_code' => 'zipCode',
-        'city' => 'city',
-        'country' => 'country',
-        'phone' => 'phone',
-        'fax' => 'fax',
-        'mobile' => 'mobile'
+        'from' => 'from',
+        'until' => 'until',
+        'reason' => 'reason',
+        'user_id' => 'userId'
     ];
 
     /**
@@ -212,16 +188,10 @@ class AddressDTO implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'street' => 'setStreet',
-        'housenumber' => 'setHousenumber',
-        'floor' => 'setFloor',
-        'zip_code' => 'setZipCode',
-        'city' => 'setCity',
-        'country' => 'setCountry',
-        'phone' => 'setPhone',
-        'fax' => 'setFax',
-        'mobile' => 'setMobile'
+        'from' => 'setFrom',
+        'until' => 'setUntil',
+        'reason' => 'setReason',
+        'user_id' => 'setUserId'
     ];
 
     /**
@@ -230,16 +200,10 @@ class AddressDTO implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'street' => 'getStreet',
-        'housenumber' => 'getHousenumber',
-        'floor' => 'getFloor',
-        'zip_code' => 'getZipCode',
-        'city' => 'getCity',
-        'country' => 'getCountry',
-        'phone' => 'getPhone',
-        'fax' => 'getFax',
-        'mobile' => 'getMobile'
+        'from' => 'getFrom',
+        'until' => 'getUntil',
+        'reason' => 'getReason',
+        'user_id' => 'getUserId'
     ];
 
     /**
@@ -299,16 +263,10 @@ class AddressDTO implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('street', $data ?? [], null);
-        $this->setIfExists('housenumber', $data ?? [], null);
-        $this->setIfExists('floor', $data ?? [], null);
-        $this->setIfExists('zip_code', $data ?? [], null);
-        $this->setIfExists('city', $data ?? [], null);
-        $this->setIfExists('country', $data ?? [], null);
-        $this->setIfExists('phone', $data ?? [], null);
-        $this->setIfExists('fax', $data ?? [], null);
-        $this->setIfExists('mobile', $data ?? [], null);
+        $this->setIfExists('from', $data ?? [], null);
+        $this->setIfExists('until', $data ?? [], null);
+        $this->setIfExists('reason', $data ?? [], null);
+        $this->setIfExists('user_id', $data ?? [], null);
     }
 
     /**
@@ -354,271 +312,109 @@ class AddressDTO implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets from
+     *
+     * @return \DateTime|null
+     */
+    public function getFrom()
+    {
+        return $this->container['from'];
+    }
+
+    /**
+     * Sets from
+     *
+     * @param \DateTime|null $from from
+     *
+     * @return self
+     */
+    public function setFrom($from)
+    {
+        if (is_null($from)) {
+            throw new \InvalidArgumentException('non-nullable from cannot be null');
+        }
+        $this->container['from'] = $from;
+
+        return $this;
+    }
+
+    /**
+     * Gets until
+     *
+     * @return \DateTime|null
+     */
+    public function getUntil()
+    {
+        return $this->container['until'];
+    }
+
+    /**
+     * Sets until
+     *
+     * @param \DateTime|null $until until
+     *
+     * @return self
+     */
+    public function setUntil($until)
+    {
+        if (is_null($until)) {
+            throw new \InvalidArgumentException('non-nullable until cannot be null');
+        }
+        $this->container['until'] = $until;
+
+        return $this;
+    }
+
+    /**
+     * Gets reason
+     *
+     * @return string|null
+     */
+    public function getReason()
+    {
+        return $this->container['reason'];
+    }
+
+    /**
+     * Sets reason
+     *
+     * @param string|null $reason reason
+     *
+     * @return self
+     */
+    public function setReason($reason)
+    {
+        if (is_null($reason)) {
+            throw new \InvalidArgumentException('non-nullable reason cannot be null');
+        }
+        $this->container['reason'] = $reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_id
      *
      * @return int|null
      */
-    public function getId()
+    public function getUserId()
     {
-        return $this->container['id'];
+        return $this->container['user_id'];
     }
 
     /**
-     * Sets id
+     * Sets user_id
      *
-     * @param int|null $id id
+     * @param int|null $user_id user_id
      *
      * @return self
      */
-    public function setId($id)
+    public function setUserId($user_id)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($user_id)) {
+            throw new \InvalidArgumentException('non-nullable user_id cannot be null');
         }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets street
-     *
-     * @return string|null
-     */
-    public function getStreet()
-    {
-        return $this->container['street'];
-    }
-
-    /**
-     * Sets street
-     *
-     * @param string|null $street street
-     *
-     * @return self
-     */
-    public function setStreet($street)
-    {
-        if (is_null($street)) {
-            throw new \InvalidArgumentException('non-nullable street cannot be null');
-        }
-        $this->container['street'] = $street;
-
-        return $this;
-    }
-
-    /**
-     * Gets housenumber
-     *
-     * @return string|null
-     */
-    public function getHousenumber()
-    {
-        return $this->container['housenumber'];
-    }
-
-    /**
-     * Sets housenumber
-     *
-     * @param string|null $housenumber housenumber
-     *
-     * @return self
-     */
-    public function setHousenumber($housenumber)
-    {
-        if (is_null($housenumber)) {
-            throw new \InvalidArgumentException('non-nullable housenumber cannot be null');
-        }
-        $this->container['housenumber'] = $housenumber;
-
-        return $this;
-    }
-
-    /**
-     * Gets floor
-     *
-     * @return string|null
-     */
-    public function getFloor()
-    {
-        return $this->container['floor'];
-    }
-
-    /**
-     * Sets floor
-     *
-     * @param string|null $floor floor
-     *
-     * @return self
-     */
-    public function setFloor($floor)
-    {
-        if (is_null($floor)) {
-            throw new \InvalidArgumentException('non-nullable floor cannot be null');
-        }
-        $this->container['floor'] = $floor;
-
-        return $this;
-    }
-
-    /**
-     * Gets zip_code
-     *
-     * @return string|null
-     */
-    public function getZipCode()
-    {
-        return $this->container['zip_code'];
-    }
-
-    /**
-     * Sets zip_code
-     *
-     * @param string|null $zip_code zip_code
-     *
-     * @return self
-     */
-    public function setZipCode($zip_code)
-    {
-        if (is_null($zip_code)) {
-            throw new \InvalidArgumentException('non-nullable zip_code cannot be null');
-        }
-        $this->container['zip_code'] = $zip_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets city
-     *
-     * @return string|null
-     */
-    public function getCity()
-    {
-        return $this->container['city'];
-    }
-
-    /**
-     * Sets city
-     *
-     * @param string|null $city city
-     *
-     * @return self
-     */
-    public function setCity($city)
-    {
-        if (is_null($city)) {
-            throw new \InvalidArgumentException('non-nullable city cannot be null');
-        }
-        $this->container['city'] = $city;
-
-        return $this;
-    }
-
-    /**
-     * Gets country
-     *
-     * @return string|null
-     */
-    public function getCountry()
-    {
-        return $this->container['country'];
-    }
-
-    /**
-     * Sets country
-     *
-     * @param string|null $country country
-     *
-     * @return self
-     */
-    public function setCountry($country)
-    {
-        if (is_null($country)) {
-            throw new \InvalidArgumentException('non-nullable country cannot be null');
-        }
-        $this->container['country'] = $country;
-
-        return $this;
-    }
-
-    /**
-     * Gets phone
-     *
-     * @return string|null
-     */
-    public function getPhone()
-    {
-        return $this->container['phone'];
-    }
-
-    /**
-     * Sets phone
-     *
-     * @param string|null $phone phone
-     *
-     * @return self
-     */
-    public function setPhone($phone)
-    {
-        if (is_null($phone)) {
-            throw new \InvalidArgumentException('non-nullable phone cannot be null');
-        }
-        $this->container['phone'] = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Gets fax
-     *
-     * @return string|null
-     */
-    public function getFax()
-    {
-        return $this->container['fax'];
-    }
-
-    /**
-     * Sets fax
-     *
-     * @param string|null $fax fax
-     *
-     * @return self
-     */
-    public function setFax($fax)
-    {
-        if (is_null($fax)) {
-            throw new \InvalidArgumentException('non-nullable fax cannot be null');
-        }
-        $this->container['fax'] = $fax;
-
-        return $this;
-    }
-
-    /**
-     * Gets mobile
-     *
-     * @return string|null
-     */
-    public function getMobile()
-    {
-        return $this->container['mobile'];
-    }
-
-    /**
-     * Sets mobile
-     *
-     * @param string|null $mobile mobile
-     *
-     * @return self
-     */
-    public function setMobile($mobile)
-    {
-        if (is_null($mobile)) {
-            throw new \InvalidArgumentException('non-nullable mobile cannot be null');
-        }
-        $this->container['mobile'] = $mobile;
+        $this->container['user_id'] = $user_id;
 
         return $this;
     }

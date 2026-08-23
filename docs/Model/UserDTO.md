@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **firstname** | **string** |  | [optional]
 **email** | **string** |  | [optional]
 **occupation** | **string** |  | [optional]
-**last_login** | **\DateTime** |  | [optional]
+**last_seen** | **\DateTime** |  | [optional]
 **date_of_birth** | **\DateTime** |  | [optional]
 **gender** | **string** |  | [optional]
 **address** | [**\Hallerweb\Prioritize\Client\Model\AddressDTO**](AddressDTO.md) |  | [optional]

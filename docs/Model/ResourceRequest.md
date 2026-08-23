@@ -19,5 +19,8 @@ Name | Type | Description | Notes
 **mqtt_data_send_topic** | **string** |  | [optional]
 **mqtt_data_receive_topic** | **string** |  | [optional]
 **mqtt_online** | **bool** |  | [optional]
+**cost_rate** | **float** |  | [optional]
+**cost_currency** | **string** |  | [optional]
+**cost_rate_unit** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
